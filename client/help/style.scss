@@ -1,0 +1,152 @@
+.is-group-help {
+    .primary-header,
+    .secondary-header,
+    .tertiary-header {
+        -webkit-font-smoothing: antialias;
+        font-weight: 400
+    }
+
+    .primary-header {
+        font-weight: 300;
+        font-size: 28px;
+        line-height: 44px;
+        margin: 12px auto 2px;
+        text-align: center
+    }
+
+    @media (max-width: 767px) {
+        .primary-header {
+            font-size: 25px;
+            line-height: 35px
+        }
+    }
+
+    .secondary-header {
+        font-weight: 400;
+        font-size: 21px;
+        line-height: 30px
+    }
+
+    .tertiary-header {
+        font-weight: 400;
+        font-size: 17px;
+        line-height: 28px
+    }
+
+    .caption-header {
+        font-size: 12px;
+        line-height: 16px;
+        font-weight: normal
+    }
+
+    .grid-990 body.business-theme {
+        min-width: 990px
+    }
+
+    .grid-990 .twelve-column {
+        margin: 0 auto;
+        width: 990px
+    }
+
+    .grid-990 .eleven-column {
+        margin: 0 auto;
+        width: 905px
+    }
+
+    .grid-990 .ten-column {
+        margin: 0 auto;
+        width: 820px
+    }
+
+    .grid-990 .nine-column {
+        margin: 0 auto;
+        width: 735px
+    }
+
+    .grid-990 .eight-column {
+        margin: 0 auto;
+        width: 650px
+    }
+
+    .grid-990 .eight-column-with-gutter {
+        margin: 0 auto;
+        width: 710px
+    }
+
+    .grid-990 .seven-column {
+        margin: 0 auto;
+        width: 565px
+    }
+
+    .grid-990 .six-column {
+        margin: 0 auto;
+        width: 480px
+    }
+
+    .grid-990 .five-column {
+        margin: 0 auto;
+        width: 395px
+    }
+
+    .grid-990 .four-column {
+        margin: 0 auto;
+        width: 310px
+    }
+
+    .grid-990 .three-column {
+        margin: 0 auto;
+        width: 225px
+    }
+
+    .grid-990 .three-column-push {
+        margin-left: 225px
+    }
+
+    .grid-990 .two-column {
+        margin: 0 auto;
+        width: 140px
+    }
+
+    .grid-990 .two-column-push {
+        margin-left: 170px
+    }
+
+    .grid-990 .one-column {
+        margin: 0 auto;
+        width: 55px
+    }
+
+    .grid-990 .quote-column-centered-over-eight-column .hero-quote {
+        margin-left: -45px;
+        width: 740px
+    }
+
+    .full-width {
+        display: block;
+        width: 100%
+    }
+
+    .full-width.gray {
+        background: #f6f9fc
+    }
+
+    .center-text {
+        text-align: center
+    }
+
+    .foot-note {
+        font-size: 12px;
+        font-style: italic;
+        text-align: center;
+        padding-bottom: 20px
+    }
+
+    .media-text-stack .media-text__media {
+        margin-top: 115px
+    }
+
+    .media-text-stack .media-text__text {
+        padding-left: 55px;
+        padding-right: 55px
+    }
+}

@@ -1,0 +1,42 @@
+.form__input {
+    font-weight: 400;
+    border-radius: 0;
+    padding-left: 18px;
+    height: 44px;
+    margin-bottom: 18px;
+
+    &.is-error {
+        border-color: var( --color-error );
+        margin-bottom: 3px;
+    }
+
+
+    &:focus {
+
+        &.is-error {
+            border-color: var( --color-error );
+        }
+    }
+}
+
+.form__validation {
+    display: flex;
+    align-items: center;
+    position: relative;
+    border-radius: 1px;
+    box-sizing: border-box;
+    font-size: 13px;
+    line-height: 14px;
+    animation: appear .3s ease-in-out;
+    font-weight: 400;
+    margin-bottom: 18px;
+    margin-top: 6px;
+
+    &.is-error {
+        color: var( --color-error );
+    }
+
+    .error-message {
+        padding-left: 5px;
+    }
+}

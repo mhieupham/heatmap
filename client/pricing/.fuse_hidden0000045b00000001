@@ -1,0 +1,425 @@
+import React from 'react';
+import ReactDOM from 'react-dom';
+import {
+    requestAnimationTimeout,
+    cancelAnimationTimeout,
+} from 'react-virtualized/dist/commonjs/utils/requestAnimationTimeout';
+
+import Head from 'components/data/document_head';
+import HomeMasterbar from 'home/masterbar';
+import Register from 'home/register';
+import Footer from 'layout/footer';
+
+import './style.scss';
+
+const HEADER_HEIGHT = 90;
+
+export default class HomeContent extends React.PureComponent {
+    constructor(props) {
+        super(props);
+
+        this.state = {
+            isMobileNavOpen: false,
+            scrolling: false,
+            registerMode: 'register',
+            registerFormOpen: false,
+            playing: false,
+        };
+    }
+
+    handleMobileNavOpenChange = (isOpen) => {
+        this.setState({isMobileNavOpen: isOpen});
+    };
+
+    handleRegisterModeChange = (nextMode) => {
+        this.setState({registerMode: nextMode});
+    };
+
+    handleRegisterFormToggle = (mode) => {
+        this.setState({registerMode: mode, registerFormOpen: true});
+    };
+
+    handleRegisterClose = () => {
+        this.setState({registerFormOpen: false})
+    };
+
+    render() {
+        return (
+            <main className='grid-990'>
+                <Head
+                    title='Nền tảng đo lường Website & Landing page'
+                />
+                <HomeMasterbar
+                    theme='white'
+                    onMobileNavOpenChange={this.handleMobileNavOpenChange}
+                    onRegisterFormToggle={this.handleRegisterFormToggle}
+                    showBorder={true}
+                />
+                <Register
+                    open={this.state.registerFormOpen}
+                    onClose={this.handleRegisterClose}
+                    scrollTop={1000}
+                    isScrolling={this.state.scrolling}
+                    registerMode={this.state.registerMode}
+                    onRegisterModeChange={this.handleRegisterModeChange}
+                />
+                <div className="u01-header__space-saver"/>
+                <div className='pricing__pricing-container'>
+                    <div className='twelve-column'>
+                        <section className='pricing-container'>
+                            <div className='pricing'>
+                                <div className='primary-header-container primary-header-container--centered'>
+                                    <h2 className='primary-header pricing__headline'>
+                                        Bắt đầu đo lường websites ngay hôm nay
+                                    </h2>
+                                </div>
+                                <ul className='plans-table clearfix with-alt-cta plans-table--with-tab'>
+                                    <li className='plans-table__plan plans-table__plan--with-tab'>
+                                        <div className='plans-table__inner-box'>
+                                            <header className='plans-table__header'>
+                                                <h2 className="plans-table__title">
+                                                    <span className="plans-table__plan-name">
+                                                        Gói cơ bản
+                                                    </span>
+                                                </h2>
+                                            </header>
+                                            <section className='plans-table__content'>
+                                                <div className='plans-table__pricing'>
+                                                    <div className='plans-table__pricing'>
+                                                        <span className="plans-table__price-number">240,000đ</span>
+                                                    </div>
+                                                    <span className="plans-table__price-sub"><span>/ tháng sử dụng</span></span>
+                                                </div>
+                                                <div className='plans-table__description'>
+                                                    <ul className="plans-table__description">
+                                                        <li className="plans-table__highlight">
+                                                            <div className="plans-table__highlight__icon"><img
+                                                                srcSet="https://cfl.dropboxstatic.com/static/images/growth/experiments/storage_2x-vflmnOXj_.png 2x"
+                                                                alt="3 TB of space for secure storage"
+                                                                src="https://cfl.dropboxstatic.com/static/images/growth/experiments/storage_1x-vfl5rbt7y.png"/>
+                                                            </div>
+                                                            3 TB of space for secure storage
+                                                        </li>
+                                                        <li className="plans-table__highlight">
+                                                            <div className="plans-table__highlight__icon"><img
+                                                                srcSet="https://cfl.dropboxstatic.com/static/images/growth/experiments/tools_2x-vflCVMyyR.png 2x"
+                                                                alt="Easy-to-use sharing and collaboration tools"
+                                                                src="https://cfl.dropboxstatic.com/static/images/growth/experiments/tools_1x-vfl6FHzkk.png"/>
+                                                            </div>
+                                                            Easy-to-use sharing and collaboration tools
+                                                        </li>
+                                                    </ul>
+                                                </div>
+                                                <ul className='plans-features-table__list plans-features-table-mobile'>
+                                                    <li className="list-item--check">120 days of file recovery</li>
+                                                    <li className="list-item--check">120 days of file recovery</li>
+                                                    <li className="list-item--check">120 days of file recovery</li>
+                                                    <li className="list-item--check">120 days of file recovery</li>
+                                                </ul>
+                                                <div className='plans-table__cta-holder'>
+                                                    <a className="plans-table__cta" href="/business/try?sku=std"
+                                                       data-trackingid="biz_standardcard_try">Try free for 30 days</a>
+                                                </div>
+                                            </section>
+                                        </div>
+                                    </li>
+                                    <li className='plans-table__plan plans-table__plan--primary plans-table__plan--with-tab plans-table__plan--primary-tab'>
+                                        <div className="plans-table__tab-callout">
+                                            <p className="plans-table__tab-callout-text">Best value</p>
+                                        </div>
+                                        <div className='plans-table__inner-box'>
+                                            <header className="plans-table__header">
+                                                <h2 className="plans-table__title">
+                                                    <span className="plans-table__plan-name">
+                                                        Gói nâng cao
+                                                    </span>
+                                                </h2>
+                                            </header>
+                                            <section className='plans-table__content'>
+                                                <div className='plans-table__pricing'>
+                                                    <div className='plans-table__pricing'>
+                                                        <span className="plans-table__price-number">450,000đ</span>
+                                                    </div>
+                                                    <span className="plans-table__price-sub"><span>/ user / month, starting at 3 users</span></span>
+                                                </div>
+                                                <div className='plans-table__description'>
+                                                    <ul className='plans-table__description'>
+                                                        <li className="plans-table__highlight">
+                                                            <div className="plans-table__highlight__icon">
+                                                                <img
+                                                                srcSet="https://cfl.dropboxstatic.com/static/images/growth/experiments/needs_2x-vflKGT6sv.png 2x"
+                                                                alt="As much space as your team needs"
+                                                                src="https://cfl.dropboxstatic.com/static/images/growth/experiments/needs_1x-vflylj0T-.png"/>
+                                                            </div>
+                                                            As much space as your team needs
+                                                        </li>
+                                                        <li className="plans-table__highlight">
+                                                            <div className="plans-table__highlight__icon"><img
+                                                                srcSet="https://cfl.dropboxstatic.com/static/images/growth/experiments/features_2x-vflEbWW-j.png 2x"
+                                                                alt="Sophisticated control and security features"
+                                                                src="https://cfl.dropboxstatic.com/static/images/growth/experiments/features_1x-vflrHrAWR.png"/>
+                                                            </div>
+                                                            Sophisticated control and security features
+                                                        </li>
+                                                    </ul>
+                                                </div>
+                                                <ul className="plans-features-table__list plans-features-table-mobile">
+                                                    <li className="list-item--check list-item--emphasize">Everything in
+                                                        Standard
+                                                    </li>
+                                                    <li className="list-item--check">Advanced admin controls</li>
+                                                    <li className="list-item--check">Tiered admin roles</li>
+                                                    <li className="list-item--check">Advanced user management tools</li>
+                                                    <li className="list-item--check">Single sign on (SSO) integration
+                                                    </li>
+                                                    <li className="list-item--check">Invite enforcement</li>
+                                                    <li className="list-item--check">Domain verification</li>
+                                                    <li className="list-item--check">Device approvals</li>
+                                                    <li className="list-item--check">File event tracking</li>
+                                                </ul>
+                                                <div className='plans-table__cta-holder'>
+                                                    <a className="plans-table__cta" href="/business/try?sku=adv"
+                                                       data-trackingid="biz_advcard_try">Try free for 30 days</a>
+                                                </div>
+                                            </section>
+                                        </div>
+                                    </li>
+                                    <li className='plans-table__plan plans-table__plan--with-tab'>
+                                        <div className='plans-table__inner-box'>
+                                            <header className='plans-table__header'>
+                                                <h2 className="plans-table__title">
+                                                    <span className="plans-table__plan-name">
+                                                        Gói miễn phí
+                                                    </span>
+                                                </h2>
+                                            </header>
+                                            <section className='plans-table__content'>
+                                                <div className="plans-table__pricing">
+                                                    <div
+                                                        className="plans-table__pricing plans-table__pricing--contact-us">
+                                                        <span
+                                                            className="plans-table__price-contact-us">Contact us</span>
+                                                    </div>
+                                                </div>
+                                                <div className="plans-table__description">
+                                                    <ul className="plans-table__description">
+                                                        <li className="plans-table__highlight">
+                                                            <div className="plans-table__highlight__icon"><img
+                                                                srcSet="https://cfl.dropboxstatic.com/static/images/growth/experiments/solutions_2x-vflsnn3Wv.png 2x"
+                                                                alt="Customizable solutions"
+                                                                src="https://cfl.dropboxstatic.com/static/images/growth/experiments/solutions_1x-vflRvECNM.png"/>
+                                                            </div>
+                                                            Customizable solutions
+                                                        </li>
+                                                        <li className="plans-table__highlight">
+                                                            <div className="plans-table__highlight__icon"><img
+                                                                srcSet="https://cfl.dropboxstatic.com/static/images/growth/experiments/scale_2x-vflft3lHD.png 2x"
+                                                                alt="Individualized support to help admins manage at scale"
+                                                                src="https://cfl.dropboxstatic.com/static/images/growth/experiments/scale_1x-vfld5IKoP.png"/>
+                                                            </div>
+                                                            Individualized support to help admins manage at scale
+                                                        </li>
+                                                    </ul>
+                                                </div>
+                                                <ul className="plans-features-table__list plans-features-table-mobile">
+                                                    <li className="list-item--check list-item--emphasize">Everything in
+                                                        Advanced
+                                                    </li>
+                                                    <li className="list-item--check">Centralized admin console to view
+                                                        and manage all your Business teams at once
+                                                    </li>
+                                                    <li className="list-item--check">Account Capture</li>
+                                                    <li className="list-item--check">Network control</li>
+                                                    <li className="list-item--check">Enterprise mobility management
+                                                        (EMM)
+                                                    </li>
+                                                    <li className="list-item--check">Domain Insights</li>
+                                                    <li className="list-item--check">Advanced training for end users and
+                                                        admins
+                                                    </li>
+                                                    <li className="list-item--check">24/7 phone support</li>
+                                                </ul>
+                                                <div className="plans-table__cta-holder">
+                                                    <a className="plans-table__cta"
+                                                       href="/enterprise/contact"
+                                                       data-trackingid="biz_card_contact">
+                                                        Contact us
+                                                    </a>
+                                                </div>
+                                            </section>
+                                        </div>
+                                    </li>
+                                </ul>
+                                <ul className='plans-features-table'>
+                                    <li className='plans-features-table__plan'>
+                                        <ul className="plans-features-table__list">
+                                            <li className="list-item--check">120 days of file recovery</li>
+                                            <li className="list-item--check">Single admin login to manage multiple
+                                                teams
+                                            </li>
+                                            <li className="list-item--check">Admin console and audit log</li>
+                                            <li className="list-item--check">256-bit AES and SSL/TLS encryption</li>
+                                            <li className="list-item--check">Granular sharing permissions</li>
+                                            <li className="list-item--check">User and company-managed groups</li>
+                                            <li className="list-item--check">Remote device wipe</li>
+                                            <li className="list-item--check">Two-factor authentication (2FA)</li>
+                                            <li className="list-item--check">Smart Sync</li>
+                                            <li className="list-item--check">Dropbox Paper admin tools</li>
+                                            <li className="list-item--check">Office 365 integration</li>
+                                            <li className="list-item--check">Unlimited API access to security and
+                                                productivity platform partners
+                                            </li>
+                                            <li className="list-item--check">1 million API calls/month for data
+                                                transport partners
+                                            </li>
+                                            <li className="list-item--check">Priority chat, email and business hours
+                                                phone support
+                                            </li>
+                                        </ul>
+                                        <ul className="plans-features-table__list">
+                                            <li className="list-item--check list-item--emphasize">Everything in
+                                                Standard
+                                            </li>
+                                            <li className="list-item--check">Advanced admin controls</li>
+                                            <li className="list-item--check">Tiered admin roles</li>
+                                            <li className="list-item--check">Advanced user management tools</li>
+                                            <li className="list-item--check">Single sign on (SSO) integration</li>
+                                            <li className="list-item--check">Invite enforcement</li>
+                                            <li className="list-item--check">Domain verification</li>
+                                            <li className="list-item--check">Device approvals</li>
+                                            <li className="list-item--check">File event tracking</li>
+                                        </ul>
+                                        <ul className="plans-features-table__list">
+                                            <li className="list-item--check list-item--emphasize">Everything in
+                                                Advanced
+                                            </li>
+                                            <li className="list-item--check">Centralized admin console to view and
+                                                manage all your Business teams at once
+                                            </li>
+                                            <li className="list-item--check">Account Capture</li>
+                                            <li className="list-item--check">Network control</li>
+                                            <li className="list-item--check">Enterprise mobility management (EMM)</li>
+                                            <li className="list-item--check">Domain Insights</li>
+                                            <li className="list-item--check">Advanced training for end users and
+                                                admins
+                                            </li>
+                                            <li className="list-item--check">24/7 phone support</li>
+                                        </ul>
+                                    </li>
+                                </ul>
+                            </div>
+                        </section>
+                    </div>
+                </div>
+                <div className='twelve-column'>
+                    <h3 className="primary-header faq-header">Frequently asked questions</h3>
+                    <div className='business-faq-list'>
+                        <dl className='business-faq-list__items'>
+                            <div className='business-faq-list__column'>
+                                <div className="business-faq-list__item">
+                                    <dt><h4 className="business-faq-list__item__question">What is a Dropbox Business
+                                        user?</h4></dt>
+                                    <dd className="business-faq-list__item__answer">A user is any person or role on your
+                                        team with a unique email address. Each team member should have his or her own
+                                        user license. Users can link their Dropbox accounts to as many of their devices
+                                        as they’d like (PCs, phones, tablets, etc.) at no additional charge.
+                                    </dd>
+                                </div>
+                                <div className="business-faq-list__item">
+                                    <dt><h4 className="business-faq-list__item__question">Can I have fewer than 3 users
+                                        on my account?</h4></dt>
+                                    <dd className="business-faq-list__item__answer">Yes. The Dropbox Business base
+                                        package includes 3 users, but you don’t need to use all the licenses right away.
+                                        Since licenses can be reused, many of our customers reserve extra licenses for
+                                        contractors or clients.
+                                    </dd>
+                                </div>
+                                <div className="business-faq-list__item">
+                                    <dt><h4 className="business-faq-list__item__question">Can I upgrade my existing
+                                        Dropbox Basic or Plus account? How does migration work?</h4></dt>
+                                    <dd className="business-faq-list__item__answer">Yes. Moving to a Business account is
+                                        easy! All your content will stay the same — your files will stay where they are,
+                                        and all your settings (like shared folder relationships and linked devices) will
+                                        remain the same. For admins, all your team members who already use Dropbox will
+                                        have that same experience, and anyone without an existing Dropbox account will
+                                        be prompted to sign up when you send them an invite.
+                                    </dd>
+                                </div>
+                                <div className="business-faq-list__item">
+                                    <dt><h4 className="business-faq-list__item__question">Can I share files or folders
+                                        with Basic/Plus users if I’m on a Business account?</h4></dt>
+                                    <dd className="business-faq-list__item__answer">Absolutely! As long as your team
+                                        admin permits external sharing, you can share with any Dropbox user, even if
+                                        they’re not a member of your Dropbox Business team. However, shared folder
+                                        members who are not on your Business team will be limited by their own storage
+                                        quotas. So while your team members will have more space to add and edit files in
+                                        a shared folder, Dropbox Basic or Plus users will be restricted by their
+                                        personal quota.
+                                    </dd>
+                                </div>
+                            </div>
+                            <div className='business-faq-list__column'>
+                                <div className="business-faq-list__item">
+                                    <dt><h4 className="business-faq-list__item__question">What is a Dropbox Business
+                                        user?</h4></dt>
+                                    <dd className="business-faq-list__item__answer">A user is any person or role on your
+                                        team with a unique email address. Each team member should have his or her own
+                                        user license. Users can link their Dropbox accounts to as many of their devices
+                                        as they’d like (PCs, phones, tablets, etc.) at no additional charge.
+                                    </dd>
+                                </div>
+                                <div className="business-faq-list__item">
+                                    <dt><h4 className="business-faq-list__item__question">Can I have fewer than 3 users
+                                        on my account?</h4></dt>
+                                    <dd className="business-faq-list__item__answer">Yes. The Dropbox Business base
+                                        package includes 3 users, but you don’t need to use all the licenses right away.
+                                        Since licenses can be reused, many of our customers reserve extra licenses for
+                                        contractors or clients.
+                                    </dd>
+                                </div>
+                                <div className="business-faq-list__item">
+                                    <dt><h4 className="business-faq-list__item__question">Can I upgrade my existing
+                                        Dropbox Basic or Plus account? How does migration work?</h4></dt>
+                                    <dd className="business-faq-list__item__answer">Yes. Moving to a Business account is
+                                        easy! All your content will stay the same — your files will stay where they are,
+                                        and all your settings (like shared folder relationships and linked devices) will
+                                        remain the same. For admins, all your team members who already use Dropbox will
+                                        have that same experience, and anyone without an existing Dropbox account will
+                                        be prompted to sign up when you send them an invite.
+                                    </dd>
+                                </div>
+                                <div className="business-faq-list__item">
+                                    <dt><h4 className="business-faq-list__item__question">Can I share files or folders
+                                        with Basic/Plus users if I’m on a Business account?</h4></dt>
+                                    <dd className="business-faq-list__item__answer">Absolutely! As long as your team
+                                        admin permits external sharing, you can share with any Dropbox user, even if
+                                        they’re not a member of your Dropbox Business team. However, shared folder
+                                        members who are not on your Business team will be limited by their own storage
+                                        quotas. So while your team members will have more space to add and edit files in
+                                        a shared folder, Dropbox Basic or Plus users will be restricted by their
+                                        personal quota.
+                                    </dd>
+                                </div>
+                            </div>
+                        </dl>
+                    </div>
+                </div>
+                <div className='customer-quote'>
+                    <div className='customer-quote__cell'>
+                        <div className='customer-quote__content'>
+                            sdfdsf
+                        </div>
+                    </div>
+                </div>
+                <div className='try-business-cta try-business-cta-footer'>
+                    <h3 className="try-business-cta__header">
+                        The best sharing and storage solution for your business
+                    </h3>
+                    <a className="btn btn-primary btn-lg try-business-cta__button" href="/business/try"
+                       data-trackingid="biz_prefooter_try">Try free for 30 days</a>
+                </div>
+                <Footer theme='white'/>
+            </main>
+        );
+    }
+}
